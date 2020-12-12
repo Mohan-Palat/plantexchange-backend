@@ -4,7 +4,10 @@ const morgan = require( "morgan" );
 const bodyParser = require( "body-parser" );
 const cors = require( "cors" );
 require( "dotenv" ).config();
+const { readdirSync } = require( "fs" ); // //file system module
 
+//import routes
+const authRoutes = require( "./routes/auth" )
 // app
 const app = express();
 
@@ -24,13 +27,25 @@ app.use( bodyParser.json( { limit: "2mb" } ) );
 app.use( cors() );
 
 // route
-app.get( "/api", ( req, res ) => {
-	res.json( {
-		data: "hey you hit node API",
-	} );
-} );
+//instead of loaidng each routes  loading all routes using fs
+//the map function will return  each routes.
+//this way we can avoid loading each routes individually
+/*
+
+The fs.readdirSync() method 
+is used to synchronously read the contents 
+of a given directory. 
+The method returns an array with all the file names
+or objects in the directory.
+The options argument can be used 
+to change the format in which the files are returned from the method.
+fs.readdirSync( path, options )
+*/
+
+readdirSync( "./routes" ).map( ( r ) => app.use( "/api", require( "./routes/" + r ) ) )
 
 // port
 const port = process.env.PORT || 8000;
 
 app.listen( port, () => console.log( `Server is running on port ${ port }` ) );
+
