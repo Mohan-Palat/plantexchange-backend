@@ -12,11 +12,18 @@ const authRoutes = require( "./routes/auth" )
 const app = express();
 
 // db
+
+
+
+//const conn = "mongodb+srv://plantexchange:plantexchange@cluster0.xsayc.mongodb.net/plantexchange?retryWrites=true&w=majority";
+
+
 mongoose
 	.connect( process.env.DATABASE, {
 		useNewUrlParser: true,
 		useCreateIndex: true,
 		useFindAndModify: true,
+		useUnifiedTopology: true
 	} )
 	.then( () => console.log( "DB CONNECTED" ) )
 	.catch( ( err ) => console.log( "DB CONNECTION ERR", err ) );
