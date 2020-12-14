@@ -4,7 +4,7 @@ const { ObjectId } = mongoose.Schema;
 const productSchema = new mongoose.Schema(
 	{
 		title: {
-			type: String,  //indoor or outdoor
+			type: String,
 			trim: true,
 			required: true,
 			maxlength: 32,
@@ -51,12 +51,12 @@ const productSchema = new mongoose.Schema(
 			enum: [ "Yes", "No" ],
 		},
 
-		// ratings: [
-		//   {
-		//     star: Number,
-		//     postedBy: { type: ObjectId, ref: "User" },
-		//   },
-		// ],
+		ratings: [
+			{
+				star: Number,
+				postedBy: { type: ObjectId, ref: "User" },
+			},
+		],
 	},
 	{ timestamps: true }
 );

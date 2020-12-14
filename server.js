@@ -7,7 +7,7 @@ require( "dotenv" ).config();
 const { readdirSync } = require( "fs" ); // //file system module
 
 //import routes
-const authRoutes = require( "./routes/auth" )
+const authRoutes = require( "./routes_s/auth" )
 // app
 const app = express();
 
