@@ -1,7 +1,16 @@
 const Category = require( "../models/category" );
 const Sub = require( "../models/sub" );
-const slugify = require( "slugify" );
+const slugify = require( "slugify" ); //https://www.npmjs.com/package/slugify
+/*
+A URL slug is the part of a URL or link that comes after the domain extension.
 
+They can be used for websites:
+In www.rebrandly.com/links - 'links' is the URL Slug.
+
+Or they can be used in your custom short links:
+In rebrandly.rocks/content-curation - 'content-curation' is the URL slug.
+https://support.rebrandly.com/hc/en-us/articles/229248407-What-is-a-URL-Slug-
+*/
 exports.create = async ( req, res ) => {
 	try
 	{
