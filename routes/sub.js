@@ -5,7 +5,7 @@ const router = express.Router();
 const { authCheck, adminCheck } = require( "../middlewares/auth" );
 
 // controller
-const { create, read, update, remove, list } = require( "../controllers_s/sub" );
+const { create, read, update, remove, list } = require( "../controllers/sub" );
 
 // routes
 router.post( "/sub", authCheck, adminCheck, create );
